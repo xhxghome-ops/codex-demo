@@ -28,5 +28,4 @@ jobs:
         env:
           MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
           MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
-          MAIL_TO: xhxghome@gmail.com
         run: python news_scanner/send_email.py

@@ -28,16 +28,17 @@ secret**):
 
 | Secret | Value |
 |---|---|
-| `MAIL_USERNAME` | The Gmail address to send from (can be your own) |
+| `MAIL_USERNAME` | Your Gmail address (used as both sender and recipient) |
 | `MAIL_PASSWORD` | A Gmail **app password** for that account |
 
 To create an app password: enable 2-step verification on the Google
 account, then go to <https://myaccount.google.com/apppasswords> and
 generate one for "Mail". Regular account passwords will not work.
 
-The recipient is set by the `MAIL_TO` value in the workflow file. A
-different SMTP provider can be used via the optional `SMTP_SERVER` and
-`SMTP_PORT` environment variables.
+By default the digest is sent to the sending address itself. To deliver
+somewhere else, set a `MAIL_TO` environment variable in the workflow's
+email step. A different SMTP provider can be used via the optional
+`SMTP_SERVER` and `SMTP_PORT` environment variables.
 
 ## Note on scheduling
 
@@ -52,12 +53,13 @@ the daily run starts once this is merged into `main`.
   `news_scanner/scan.py`.
 - **Change the schedule:** edit the `cron` expression in
   `.github/workflows/daily-news-scan.yml` (times are UTC).
-- **Change the recipient:** edit `MAIL_TO` in the workflow file.
+- **Change the recipient:** add a `MAIL_TO` env var to the email step in
+  the workflow file (defaults to the sending address).
 
 ## Run locally
 
 ```bash
 python3 news_scanner/scan.py
-MAIL_USERNAME=you@gmail.com MAIL_PASSWORD=app-password MAIL_TO=you@gmail.com \
+MAIL_USERNAME=you@gmail.com MAIL_PASSWORD=app-password \
   python3 news_scanner/send_email.py
 ```

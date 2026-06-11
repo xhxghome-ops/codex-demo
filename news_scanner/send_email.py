@@ -7,7 +7,7 @@ variables:
 
     MAIL_USERNAME  SMTP login (e.g. your Gmail address)        [required]
     MAIL_PASSWORD  SMTP password (Gmail: an app password)      [required]
-    MAIL_TO        Recipient address                           [required]
+    MAIL_TO        Recipient address (default: MAIL_USERNAME)
     SMTP_SERVER    SMTP host (default: smtp.gmail.com)
     SMTP_PORT      SMTP SSL port (default: 465)
 
@@ -71,7 +71,7 @@ def md_to_html(md):
 def main():
     username = os.environ.get("MAIL_USERNAME")
     password = os.environ.get("MAIL_PASSWORD")
-    recipient = os.environ.get("MAIL_TO")
+    recipient = os.environ.get("MAIL_TO") or username
     server = os.environ.get("SMTP_SERVER", "smtp.gmail.com")
     port = int(os.environ.get("SMTP_PORT", "465"))
 
@@ -80,7 +80,6 @@ def main():
         for name, value in [
             ("MAIL_USERNAME", username),
             ("MAIL_PASSWORD", password),
-            ("MAIL_TO", recipient),
         ]
         if not value
     ]
