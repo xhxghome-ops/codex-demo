@@ -1,0 +1,44 @@
+{
+  "sources": [
+    {
+      "name": "Google News: work design",
+      "url": "https://news.google.com/rss/search?q=%22work+design%22&hl=en-US&gl=US&ceid=US:en"
+    },
+    {
+      "name": "Google News: job design",
+      "url": "https://news.google.com/rss/search?q=%22job+design%22&hl=en-US&gl=US&ceid=US:en"
+    },
+    {
+      "name": "Google News: work redesign",
+      "url": "https://news.google.com/rss/search?q=%22work+redesign%22+OR+%22redesigning+work%22&hl=en-US&gl=US&ceid=US:en"
+    },
+    {
+      "name": "Google News: future of work",
+      "url": "https://news.google.com/rss/search?q=%22future+of+work%22&hl=en-US&gl=US&ceid=US:en"
+    },
+    {
+      "name": "Harvard Business Review",
+      "url": "https://feeds.hbr.org/harvardbusiness"
+    },
+    {
+      "name": "MIT Sloan Management Review",
+      "url": "https://sloanreview.mit.edu/feed/"
+    },
+    {
+      "name": "HR Dive",
+      "url": "https://www.hrdive.com/feeds/news/"
+    },
+    {
+      "name": "WorkLife",
+      "url": "https://www.worklife.news/feed/"
+    },
+    {
+      "name": "Human Resources Director",
+      "url": "https://www.hcamag.com/us/rss"
+    },
+    {
+      "name": "Fast Company",
+      "url": "https://www.fastcompany.com/latest/rss"
+    }
+  ]
+}
