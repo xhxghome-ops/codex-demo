@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   scan:
@@ -24,14 +24,9 @@ jobs:
       - name: Scan news sources
         run: python news_scanner/scan.py
 
-      - name: Commit report
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add reports/
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Daily work design news report ($(date -u +%Y-%m-%d))"
-            git push
-          fi
+      - name: Email report
+        env:
+          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+          MAIL_TO: xhxghome@gmail.com
+        run: python news_scanner/send_email.py
